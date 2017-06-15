@@ -9,4 +9,5 @@
 @property (strong, nonatomic) NSString *appversion;
 @property (strong, nonatomic) NSString *userid;
 @property (strong, nonatomic) NSString *sessionid;
+- (void)setObject:(id)object forKey:(NSString *) key;
 @end

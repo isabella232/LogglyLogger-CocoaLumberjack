@@ -129,7 +129,7 @@
     });
 }
 
-- (void)setObject:(id)object forKey:(NSString *) object{
+- (void)setObject:(id)object forKey:(NSString *) key{
     dispatch_barrier_async(_queue, ^{
         NSMutableDictionary *dict = [_fieldsDictionary mutableCopy];
         if (object != nil) {
