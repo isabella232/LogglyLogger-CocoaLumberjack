@@ -129,6 +129,18 @@
     });
 }
 
+- (void)setObject:(id)object forKey:(NSString *) object{
+    dispatch_barrier_async(_queue, ^{
+        NSMutableDictionary *dict = [_fieldsDictionary mutableCopy];
+        if (object != nil) {
+            [dict setObject:object forKey:key];
+        } else {
+            [dict removeObjectForKey:key];
+        }
+        _fieldsDictionary = [NSDictionary dictionaryWithDictionary:dict];
+    });
+}
+
 #pragma mark Private methods
 
 - (NSString*)generateRandomStringWithSize:(int)num {
