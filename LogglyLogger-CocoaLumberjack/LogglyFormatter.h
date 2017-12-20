@@ -14,4 +14,5 @@
 @property (nonatomic, assign) BOOL alwaysIncludeRawMessage;
 - (id)initWithLogglyFieldsDelegate:(id<LogglyFieldsDelegate>)delegate;
 @property (nonatomic, assign) DDLogLevel logLevel;
+- (BOOL) updateLogfields:(NSMutableDictionary*) logfields withMessage:(DDLogMessage *)logMessage;
 @end

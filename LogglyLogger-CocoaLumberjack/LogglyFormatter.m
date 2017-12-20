@@ -54,6 +54,10 @@
     return self;
 }
 
+- (BOOL) updateLogfields:(NSMutableDictionary*) logfields withMessage:(DDLogMessage *)logMessage{
+    return YES;
+}
+
 - (NSString *)formatLogMessage:(DDLogMessage *)logMessage
 {
     if ((logMessage->_flag & self.logLevel) == 0){
@@ -95,6 +99,10 @@
                 [logfields removeObjectForKey:@"rawlogmessage"];
             }
         }
+    }
+
+    if ([self updateLogfields:logfields withMessage:logMessage] == NO){
+        return nil;
     }
 
     NSError *outputJsonError;
