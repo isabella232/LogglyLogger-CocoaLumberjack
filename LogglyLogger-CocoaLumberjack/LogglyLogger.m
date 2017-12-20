@@ -64,6 +64,11 @@
         _logMessagesArray = [NSMutableArray arrayWithCapacity:1000];
     }
 
+    NSString* message = [self->_logFormatter formatLogMessage:logMessage];
+    if (message.length == 0){
+        return NO;
+    }
+
     if ([_logMessagesArray count] > 2000) {
         // Too much logging is coming in too fast. Let's not put this message in the array
         // However, we want the abstract logger to retry at some time later, so
@@ -71,7 +76,7 @@
         return YES;
     }
 
-    [_logMessagesArray addObject:[self->_logFormatter formatLogMessage:logMessage]];
+    [_logMessagesArray addObject:message];
     return YES;
 }
 

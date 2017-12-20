@@ -13,4 +13,5 @@
 @interface LogglyFormatter : NSObject <DDLogFormatter>
 @property (nonatomic, assign) BOOL alwaysIncludeRawMessage;
 - (id)initWithLogglyFieldsDelegate:(id<LogglyFieldsDelegate>)delegate;
+@property (nonatomic, assign) DDLogLevel logLevel;
 @end

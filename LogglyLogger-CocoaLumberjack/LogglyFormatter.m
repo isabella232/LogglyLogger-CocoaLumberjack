@@ -39,6 +39,7 @@
         // Use standard LogglyFields Delegate
         logglyFieldsDelegate = [[LogglyFields alloc] init];
         self.alwaysIncludeRawMessage = YES;
+        self.logLevel = DDLogLevelVerbose;
     }
     return self;
 }
@@ -54,6 +55,9 @@
 
 - (NSString *)formatLogMessage:(DDLogMessage *)logMessage
 {
+    if ((logMessage->_flag & self.logLevel) == 0){
+        return nil;
+    }
     // Get the fields that should be included in every log entry.
     NSMutableDictionary *logfields = [NSMutableDictionary dictionaryWithDictionary:[logglyFieldsDelegate logglyFieldsToIncludeInEveryLogStatement]];
 
