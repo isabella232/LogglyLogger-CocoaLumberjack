@@ -49,6 +49,7 @@
     {
         logglyFieldsDelegate = delegate;
         self.alwaysIncludeRawMessage = YES;
+        self.logLevel = DDLogLevelVerbose;
     }
     return self;
 }
